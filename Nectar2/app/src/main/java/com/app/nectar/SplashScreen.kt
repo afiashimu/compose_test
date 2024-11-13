@@ -1,4 +1,6 @@
-package com.app.application
+package com.app.nectar
+
+
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -18,7 +20,7 @@ import androidx.navigation.NavController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
-import com.app.application.ui.theme.GreenJC
+import com.app.nectar.ui.theme.GreenJC
 import kotlinx.coroutines.delay
 
 @Composable
@@ -26,7 +28,7 @@ fun SplashScreen(navController: NavController) {
     // Delay the splash screen for 3 seconds and then navigate to MainScreen
     LaunchedEffect(Unit) {
         delay(3000L)
-        navController.navigate("main_screen") {
+        navController.navigate("WelcomeScreen") {
             popUpTo("splash_screen") { inclusive = true }
         }
     }
@@ -66,6 +68,7 @@ fun MainScreen() {
 @Composable
 fun MyApp() {
     val navController = rememberNavController()
+
     NavHost(navController, startDestination = "splash_screen") {
         composable("splash_screen") { SplashScreen(navController) }
         composable("main_screen") { MainScreen() }
